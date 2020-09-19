@@ -8,9 +8,82 @@
   color: white;
 }
 
+.collegeBanner {
+  height: auto;
+  padding: 20px;
+  background-color: grey;
+  color: white;
+}
+
 .searchResults {
   z-index: 1000 !important;
   position: absolute !important;
+  top: 2.5rem;
   width: 100%;
   color: black;
+}
+
+.badgeData {
+  margin-left: 10px;
+}
+
+.sortRequests {
+  height: 70vh;
+  overflow-y: auto;
+}
+
+.requestBox {
+  padding: 20px;
+  margin: 20px;
+  background-color: grey;
+  color: white;
+}
+
+.valRequests {
+  height: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0px;
+}
+
+.collegeList {
+  list-style-type: none;
+}
+
+.collegeList div {
+  margin: 10px;
+  font-size: 1.25rem;
+}
+
+.collegeList a {
+  color: black;
+}
+
+.collegeList a:hover {
+  color: grey;
+  text-decoration: none;
+}
+
+.participatingBanner {
+  padding: 20px;
+  width: 100%;
+  height: auto;
+  background-color: grey;
+}
+
+.statHome {
+  padding: 20px;
+  width: 100%;
+}
+
+.participatingBanner .collegeListContainer {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+
+#root {
+  max-width: 2000px;
+  margin-left: auto;
+  margin-right: auto;
 }

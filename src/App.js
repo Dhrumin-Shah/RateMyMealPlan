@@ -32,6 +32,7 @@ class App extends React.Component {
     state = {
         colleges: [],
         authenticated: false,
+        reviews: 0,
     };
 
     componentDidMount() {
@@ -41,6 +42,9 @@ class App extends React.Component {
         database.ref('colleges/').on('value', (snapshot) => {
             this.setState({colleges: snapshot.val()});
         });
+        database.ref('reviewCount/').on('value', (snapshot) => {
+            this.setState({reviews: snapshot.val()});
+        })
         firebase.auth().onAuthStateChanged(user => {
             if(user) {
                 this.setState({authenticated: true});
@@ -60,7 +64,6 @@ class App extends React.Component {
                 <Navbar.Collapse>
                     <Nav className="mr-auto">
                     <Nav.Link href="/review">Review</Nav.Link>
-                    <Nav.Link href="/rankings">Rankings</Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -83,6 +86,8 @@ class App extends React.Component {
                                 <Row className="justify-content-center">
                                     <Col xs="10">
                                         <h1 className="text-center">Rate My Meal Plan</h1>
+                                        <h3 className="text-center">We are currently under maintenance</h3>
+                                        <h3 className="text-center">No site functionality for unauthorized users</h3>
                                         <p className="text-center">See how your college's meal plan compares</p>
                                     </Col>
                                 </Row>
@@ -95,12 +100,18 @@ class App extends React.Component {
                                     <Button type="button" href="/review" id="addReview">Add Review</Button>
                                 </Row>
                             </div>
-                        <Container>
-                            <div>
-                                <h3>All participating schools</h3>
+                        <>
+                            <div className="statHome">
+                                <div className="align-middle">
+                                    <h3 className="text-center">View {this.state.reviews} reviews from {this.state.colleges.length} colleges and universities</h3>
+                                    <p className="text-center">We're always looking to gather more data to give our visitors the most recent and accurate information. Consider adding a review today!</p>
+                                </div>
+                            </div>
+                            <div className="participatingBanner">
+                                <h3 className="text-center">All participating schools</h3>
                                 <Colleges colleges={this.state.colleges} />
                             </div>
-                        </Container>
+                        </>
                     </Route>
                 </Switch>
             </Router>

@@ -8,9 +8,9 @@ class CollegeListItem extends React.Component {
         let collegeName = this.props.college;
         collegeName = collegeName.replace(/ /g, '_');
         return(
-            <ListGroupItem action href={'/college/'+collegeName}>
-                {this.props.college}
-            </ListGroupItem>
+            <div className="text-center">
+                <a action href={'/college/'+collegeName}>{this.props.college}</a>
+            </div>
         )
     }
 }

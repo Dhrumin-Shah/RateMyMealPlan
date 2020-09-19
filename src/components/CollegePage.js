@@ -6,6 +6,7 @@ import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import {getFirebase} from "../firebase";
 import ReviewBox from "./ReviewBox";
+import CollegeRanking from "./CollegeRanking";
 
 class CollegePage extends React.Component {
 
@@ -14,18 +15,15 @@ class CollegePage extends React.Component {
         college = college.replace(/_/g, " ");
         let database = getFirebase().database();
         return(
-            <Container>
-                <h1>{college}</h1>
-                <div>DATA</div>
-                <Tabs defaultActiveKey="reviews" id="collegeData">
-                    <Tab eventKey="reviews" title="Reviews">
-                        <ReviewBox college={college} />
-                    </Tab>
-                    <Tab eventKey="recommendations" title="Recommendations">
-
-                    </Tab>
-                </Tabs>
-            </Container>
+            <>
+                <div className="collegeBanner">
+                    <h1 className="text-center">{college}</h1>
+                </div>
+                <Container>
+                    <CollegeRanking college={college} />
+                    <ReviewBox college={college} />
+                </Container>
+            </>
         )
     }
 }
